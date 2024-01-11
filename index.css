@@ -1,3 +1,45 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
 *,
 *::before,
 *::after {
@@ -5,6 +47,28 @@
 }
 * {
   margin: 0;
+}
+
+html {
+  /* clr - color, fs - font size, ff - font family, fw - font weight */
+
+  --clr-primary-400: hsl(259, 100%, 65%);
+  --clr-primary-500: hsl(0, 100%, 67%);
+
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-125: hsl(0, 0%, 94%);
+  --clr-neutral-150: hsl(0, 0%, 86%);
+  --clr-neutral-500: hsl(0, 1%, 44%);
+  --clr-neutral-900: hsl(0, 0%, 8%);
+
+  --fs-base: 1rem;
+  --fs-primary: 2rem;
+  --fs-xl: 5rem;
+  --fs-xxl: 6rem;
+
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fw-extra-bold: 800;
 }
 
 html,
@@ -15,6 +79,11 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--clr-neutral-150);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 img,
@@ -41,10 +110,11 @@ h6 {
   overflow-wrap: break-word;
 }
 
-.try1 {
-  font-family: "Poppins";
-}
-
-.try2 {
-  font-family: sans-serif;
+.main-window {
+  height: 65%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-neutral-100);
+  border-radius: 3rem 3rem 12rem 3rem;
 }
