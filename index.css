@@ -117,7 +117,9 @@ h6 {
   flex-direction: column;
   background-color: var(--clr-neutral-100);
   border-radius: 3rem 3rem 12rem 3rem;
+  padding: 3.5rem;
 }
+
 .age-input-section {
   width: 100%;
   display: flex;
@@ -131,9 +133,22 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 0.75rem;
 }
 
 .date-period-input-field input {
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-900);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  padding: 5% 12.5%;
+}
+
+.date-period-input-field input::placeholder {
+  color: var(--clr-neutral-500);
 }
 
 .time-period-input-title {
@@ -145,10 +160,19 @@ h6 {
 }
 
 .error {
+  color: var(--clr-primary-500);
+  font-size: var(--clr-neutral-100);
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
 }
 
 .button-section {
+  margin-top: 3rem;
 }
+
+.button-section div {
+}
+
 .age-output-section {
 }
 .date-period-output-field {
