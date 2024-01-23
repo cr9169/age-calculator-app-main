@@ -64,7 +64,7 @@ html {
   --fs-base: 0.5rem;
   --fs-primary: 1rem;
   --fs-xl: 2rem;
-  --fs-xxl: 3rem;
+  --fs-xxl: 5rem;
 
   --fw-regular: 400;
   --fw-bold: 700;
@@ -111,7 +111,7 @@ h6 {
 }
 
 .main-window {
-  height: 65%;
+  height: auto;
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -151,6 +151,10 @@ h6 {
   color: var(--clr-neutral-500);
 }
 
+.date-period-input-field input:hover {
+  cursor: url("./assets/images/icons8-hand-cursor-32.png"), pointer;
+}
+
 .time-period-input-title {
   font-size: var(--fs-primary);
   font-weight: var(--fw-bold);
@@ -177,7 +181,7 @@ h6 {
   width: 90%;
 }
 
-.button-section div {
+.button-section button {
   height: 6.5rem;
   width: 6.5rem;
   background-color: var(--clr-primary-400);
@@ -185,14 +189,40 @@ h6 {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  border: 0;
 }
 
-.button-section div:hover {
+.button-section button:hover {
   background-color: var(--clr-neutral-900);
-  cursor: url("./assets/images/download-compresskaru.com.png"), pointer;
+  cursor: url("./assets/images/icons8-hand-cursor-32.png"), pointer;
 }
 
 .age-output-section {
+  display: flex;
+  flex-direction: column;
 }
+
 .date-period-output-field {
+  display: flex;
+  flex-direction: row;
+}
+
+.years-age,
+.months-age,
+.days-age {
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-extra-bold);
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+  color: var(--clr-primary-400);
+}
+
+.years-output,
+.months-output,
+.days-output {
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-extra-bold);
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+  color: var(--clr-primary-900);
 }
