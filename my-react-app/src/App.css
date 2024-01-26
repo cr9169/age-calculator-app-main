@@ -163,6 +163,12 @@ h6 {
   font-style: normal;
 }
 
+.days-error,
+.months-error,
+.years-error {
+  color: var(--clr-primary-500);
+}
+
 .error {
   color: var(--clr-primary-500);
   font-size: var(--clr-neutral-100);

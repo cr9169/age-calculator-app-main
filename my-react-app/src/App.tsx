@@ -17,6 +17,9 @@ function App() {
   const [monthsAge, setMonthsAge] = useState<string>("- -");
   const [yearsAge, setYearsAge] = useState<string>("- -");
 
+  const [isInputOK, setIsInputOk] = useState<boolean>(true);
+  const [isPressedButton, setIsPressedButton] = useState<boolean>(false);
+
   const possibleErrors = new Map([
     ["emptyField", "This field is required"],
     ["InvalidDate", "Must be a valid date"],
@@ -48,6 +51,14 @@ function App() {
     setDaysAge("- -");
     setMonthsAge("- -");
     setYearsAge("- -");
+
+    setIsInputOk(true);
+    setIsPressedButton(false);
+  };
+
+  const isOneDateFieldEmpty = () => {
+    if (day === "" || month === "" || year === "") return true;
+    return false;
   };
 
   const addOutput = (): void => {
@@ -57,13 +68,8 @@ function App() {
       parseInt(year)
     );
 
-    if (!isDateTemplate(result)) {
+    if (!isDateTemplate(result) && isOneDateFieldEmpty()) {
       for (const error of result!) {
-        console.log(result);
-
-        console.log(error);
-        console.log(possibleErrors.get(error));
-
         const possibleError: string = possibleErrors.get(error) as string;
         if (
           containsSubstringIgnoreCase(possibleError, "day") ||
@@ -75,8 +81,12 @@ function App() {
         if (containsSubstringIgnoreCase(possibleError, "year"))
           setYearError(possibleError);
       }
+
+      setIsInputOk(false);
       return;
     }
+
+    console.log(result);
 
     setDaysAge(result.days.toString());
     setMonthsAge(result.months.toString());
@@ -87,17 +97,16 @@ function App() {
     resetOutputs();
     const emptyFieldError = possibleErrors.get("emptyField") as string;
 
-    console.log(day, month, year);
-
     if (day === "") setDayError(emptyFieldError);
 
     if (month === "") setMonthError(emptyFieldError);
 
-    if (year === "") {
-      setYearError(emptyFieldError);
-      return;
-    }
+    if (year === "") setYearError(emptyFieldError);
 
+    if (!(day === "" || month === "" || year === "")) {
+      setIsInputOk(true);
+    }
+    setIsPressedButton(true);
     addOutput();
   };
 
@@ -105,35 +114,77 @@ function App() {
     <div className="main-window">
       <div className="age-input-section">
         <div className="date-period-input-field">
-          <span className="time-period-input-title">D A Y</span>
+          <span
+            className="time-period-input-title"
+            style={
+              !isInputOK && isPressedButton
+                ? { color: "hsl(0, 100%, 67%)" }
+                : { color: "hsl(0, 0%, 8%)" }
+            }
+          >
+            D A Y
+          </span>
           <input
             type="text"
             className="days-input"
             placeholder="DD"
             value={day}
             onChange={handleDayChange}
+            style={
+              !isInputOK && isPressedButton
+                ? { borderColor: "hsl(0, 100%, 67%)" }
+                : { borderColor: "hsl(0, 0%, 8%)" }
+            }
           />
           <span className="days-error">{dayError}</span>
         </div>
         <div className="date-period-input-field">
-          <span className="time-period-input-title">M O N T H</span>
+          <span
+            className="time-period-input-title"
+            style={
+              !isInputOK && isPressedButton
+                ? { color: "hsl(0, 100%, 67%)" }
+                : { color: "hsl(0, 0%, 8%)" }
+            }
+          >
+            M O N T H
+          </span>
           <input
             type="text"
             className="months-input"
             placeholder="MM"
             value={month}
             onChange={handleMonthChange}
+            style={
+              !isInputOK && isPressedButton
+                ? { borderColor: "hsl(0, 100%, 67%)" }
+                : { borderColor: "hsl(0, 0%, 8%)" }
+            }
           />
           <span className="months-error">{monthError}</span>
         </div>
         <div className="date-period-input-field">
-          <span className="time-period-input-title">Y E A R</span>
+          <span
+            className="time-period-input-title"
+            style={
+              !isInputOK && isPressedButton
+                ? { color: "hsl(0, 100%, 67%)" }
+                : { color: "hsl(0, 0%, 8%)" }
+            }
+          >
+            Y E A R
+          </span>
           <input
             type="text"
             className="years-input"
             placeholder="YYYY"
             value={year}
             onChange={handleYearChange}
+            style={
+              !isInputOK && isPressedButton
+                ? { borderColor: "hsl(0, 100%, 67%)" }
+                : { borderColor: "hsl(0, 0%, 8%)" }
+            }
           />
           <span className="years-error">{yearError}</span>
         </div>
