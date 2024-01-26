@@ -1,6 +1,4 @@
-import { dateTemplate } from "../types";
-
-export class Calc {
+export class Validator {
   static ValidateDate(day: number, month: number, year: number): string[] {
     const errors: string[] = [];
     const currentDate = new Date();
@@ -33,9 +31,12 @@ export class Calc {
       30,
       31,
     ];
-    if (day < 1 || day > daysInMonth[month - 1]) {
+    if (day < 1)
       errors.push("invalidDay");
-    }
+
+    if (day > daysInMonth[month - 1]) 
+      errors.push("InvalidDate");
+    
 
     if (!errors.length && inputDate > currentDate) {
       if (inputDate.getFullYear() > currentDate.getFullYear())
@@ -47,34 +48,5 @@ export class Calc {
     }
 
     return errors;
-  }
-
-  static calculateAge(
-    day: number,
-    month: number,
-    year: number
-  ): dateTemplate | string[] | null {
-    if (!Calc.ValidateDate(day, month, year).length) {
-      const today = new Date();
-      const birthDate = new Date(year, month - 1, day);
-      let years = today.getFullYear() - birthDate.getFullYear();
-      let months = today.getMonth() - birthDate.getMonth();
-      let days = today.getDate() - birthDate.getDate();
-
-      if (days < 0) {
-        months--;
-        const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-        days += lastMonth.getDate();
-      }
-
-      if (months < 0) {
-        years--;
-        months += 12;
-      }
-
-      return { years, months, days };
-    }
-
-    return Calc.ValidateDate(day, month, year);
   }
 }

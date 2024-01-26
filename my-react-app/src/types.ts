@@ -1,5 +1,6 @@
 export type dateTemplate = { years: number; months: number; days: number };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const isDateTemplate = (obj: any): obj is dateTemplate => {
   return (
     obj !== null &&
