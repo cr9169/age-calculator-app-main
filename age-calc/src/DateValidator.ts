@@ -111,7 +111,7 @@ export class DateValidator {
   }
 
   validateYear(): string | null {
-    if (this.stringDay === "")
+    if (this.stringYear === "")
       return this.possibleErrors.get(0)!;
 
     const yearError =

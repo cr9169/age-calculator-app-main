@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import "./App.css";
-import { Calc } from "./Calc";
+import { Calc } from "./AgeCalculator";
 import { isDateTemplate } from "./types";
 import { containsSubstringIgnoreCase } from "./stringActions";
 
@@ -19,17 +19,6 @@ function App() {
 
   const [isInputOK, setIsInputOk] = useState<boolean>(true);
   const [isPressedButton, setIsPressedButton] = useState<boolean>(false);
-
-  const possibleErrors = new Map([
-    ["emptyField", "This field is required"],
-    ["InvalidDate", "Must be a valid date"],
-    ["invalidDay", "Must be a valid day"],
-    ["invalidMonth", "Must be a vaild month"],
-    ["invalidYear", "Must be a valid year"],
-    ["futureDay", "Day must be in the past"],
-    ["futureMonth", "Month must be in the past"],
-    ["futureYear", "Year must be in the past"],
-  ]);
 
   const handleDayChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDay(e.target.value);
