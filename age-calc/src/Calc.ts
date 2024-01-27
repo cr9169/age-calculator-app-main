@@ -1,5 +1,5 @@
 import { dateTemplate } from "./types";
-import { Validator } from "./Validator";
+import { Validator } from "./DateValidator";
 
 export class Calc {
   static calculateAge(
