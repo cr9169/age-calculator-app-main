@@ -34,7 +34,7 @@ export class DateValidator {
 
   isLeapYear(): boolean {
     return (
-      this.year % 4 === 0 && (this.year % 100 !== 0 || this.year % 400 === 0)
+      this._year % 4 === 0 && (this._year % 100 !== 0 || this._year % 400 === 0)
     );
   }
 
@@ -84,9 +84,9 @@ export class DateValidator {
 
     if (this.stringDay === "") return this.possibleErrors.get(0)!;
 
-    if (this.day < 1) return this.possibleErrors.get(2)!;
+    if (this._day < 1) return this.possibleErrors.get(2)!;
 
-    if (this.day > daysInMonth[this.month - 1])
+    if (this._day > daysInMonth[this._month - 1])
       return this.possibleErrors.get(1)!;
 
     if (this.isDateInTheFuture() && this.isFutureByDays())
@@ -98,7 +98,7 @@ export class DateValidator {
   validateMonth(): string | null {
     if (this.stringMonth === "") return this.possibleErrors.get(0)!;
 
-    if (this.month < 1 || this.month > 12) {
+    if (this._month < 1 || this._month > 12) {
       return this.possibleErrors.get(3)!;
     }
 
@@ -112,7 +112,11 @@ export class DateValidator {
     if (this.stringYear === "") return this.possibleErrors.get(0)!;
 
     const yearError =
-      this.year < 1 ? 4 : this.year > this.currentDate.getFullYear() ? 7 : null;
+      this._year < 1
+        ? 4
+        : this._year > this.currentDate.getFullYear()
+        ? 7
+        : null;
 
     if (yearError) return this.possibleErrors.get(yearError)!;
 
@@ -123,26 +127,26 @@ export class DateValidator {
   }
 
   get day(): number {
-    return this.day;
+    return this._day;
   }
 
   set day(value: number) {
-    this.day = value;
+    this._day = value;
   }
 
   get month(): number {
-    return this.month;
+    return this._month;
   }
 
   set month(value: number) {
-    this.month = value;
+    this._month = value;
   }
 
   get year(): number {
-    return this.year;
+    return this._year;
   }
 
   set year(value: number) {
-    this.year = value;
+    this._year = value;
   }
 }

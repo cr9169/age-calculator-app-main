@@ -2,7 +2,6 @@ import { ChangeEvent, useState } from "react";
 import "./App.css";
 import { AgeCalculator } from "./AgeCalculator";
 import { DateValidator } from "./DateValidator";
-import { containsSubstringIgnoreCase } from "./stringActions";
 
 function App() {
   const [day, setDay] = useState<string>("");
@@ -43,6 +42,8 @@ function App() {
     setYear(e.target.value);
   };
 
+  // const handleDayOutput = () => {};
+
   const resetOutputs = () => {
     setDayError("");
     setMonthError("");
@@ -56,62 +57,46 @@ function App() {
     setIsPressedButton(false);
   };
 
-  const isOneDateFieldEmpty = () => {
-    if (day === "" || month === "" || year === "") return true;
-    return false;
-  };
+  // const isOneDateFieldEmpty = () => {
+  //   if (day === "" || month === "" || year === "") return true;
+  //   return false;
+  // };
 
-  const addOutput = (): void => {
-    dateValidator.day = parseInt(day);
-    dateValidator.month = parseInt(month);
-    dateValidator.year = parseInt(year);
-
-    dateValidator.day = parseInt(day);
-    dateValidator.month = parseInt(month);
-    dateValidator.year = parseInt(year);
-
-    const result = ageCalculator.calculateAge();
-
-    // if (!isDateTemplate(result) && isOneDateFieldEmpty()) {
-    //   for (const error of result!) {
-    //     const possibleError: string = possibleErrors.get(error) as string;
-    //     if (
-    //       containsSubstringIgnoreCase(possibleError, "day") ||
-    //       containsSubstringIgnoreCase(possibleError, "date")
-    //     )
-    //       setDayError(possibleError);
-    //     if (containsSubstringIgnoreCase(possibleError, "month"))
-    //       setMonthError(possibleError);
-    //     if (containsSubstringIgnoreCase(possibleError, "year"))
-    //       setYearError(possibleError);
-    //   }
-
-    //   setIsInputOk(false);
-    //   return;
-    // }
-
-    console.log(result);
-
-    setDaysAge(result.days.toString());
-    setMonthsAge(result.months.toString());
-    setYearsAge(result.years.toString());
-  };
-
-  const activateCalc = (): void => {
+  const handleButtonPress = (): void => {
     resetOutputs();
-    const emptyFieldError = possibleErrors.get("emptyField") as string;
-
-    if (day === "") setDayError(emptyFieldError);
-
-    if (month === "") setMonthError(emptyFieldError);
-
-    if (year === "") setYearError(emptyFieldError);
-
-    if (!(day === "" || month === "" || year === "")) {
-      setIsInputOk(true);
-    }
     setIsPressedButton(true);
-    addOutput();
+
+    dateValidator.day = parseInt(day);
+    dateValidator.month = parseInt(month);
+    dateValidator.year = parseInt(year);
+
+    dateValidator.day = parseInt(day);
+    dateValidator.month = parseInt(month);
+    dateValidator.year = parseInt(year);
+
+    const validateDay = dateValidator.validateDay();
+    const validateMonth = dateValidator.validateMonth();
+    const validateYear = dateValidator.validateYear();
+
+    if (validateDay) {
+      setIsInputOk(false);
+      setDayError(validateDay);
+    }
+    if (validateMonth) {
+      setIsInputOk(false);
+      setMonthError(validateMonth);
+    }
+    if (validateYear) {
+      setIsInputOk(false);
+      setYearError(validateYear);
+    }
+
+    if (!validateDay && !validateMonth && !validateYear) {
+      const result = ageCalculator.calculateAge();
+      setDaysAge(result.days.toString());
+      setMonthsAge(result.months.toString());
+      setYearsAge(result.years.toString());
+    }
   };
 
   return (
@@ -195,7 +180,7 @@ function App() {
       </div>
       <div className="button-section">
         <hr />
-        <button className="activate-button" onClick={activateCalc}>
+        <button className="activate-button" onClick={handleButtonPress}>
           <img src="./assets/images/icon-arrow.svg" alt="" />
         </button>
       </div>
