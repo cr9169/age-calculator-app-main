@@ -2,7 +2,12 @@ export class AgeCalculator {
   private birthDate: Date;
 
   constructor(day: number, month: number, year: number) {
-    this.birthDate = new Date(year, month - 1, day);
+    if (year < 100) {
+      this.birthDate = new Date(year, month - 1, day);
+      this.birthDate.setFullYear(year);
+    } else {
+      this.birthDate = new Date(year, month - 1, day);
+    }
   }
 
   public calculateAge(): { days: number; months: number; years: number } {
@@ -26,6 +31,12 @@ export class AgeCalculator {
       years--;
       months += 12;
     }
+
+    console.log(
+      { years, months, days },
+      today.getFullYear(),
+      this.birthDate.getFullYear()
+    );
 
     return { years, months, days };
   }

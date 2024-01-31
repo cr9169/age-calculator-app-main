@@ -42,8 +42,6 @@ function App() {
     setYear(e.target.value);
   };
 
-  // const handleDayOutput = () => {};
-
   const resetOutputs = () => {
     setDayError("");
     setMonthError("");
@@ -56,11 +54,6 @@ function App() {
     setIsInputOk(true);
     setIsPressedButton(false);
   };
-
-  // const isOneDateFieldEmpty = () => {
-  //   if (day === "" || month === "" || year === "") return true;
-  //   return false;
-  // };
 
   const handleButtonPress = (): void => {
     resetOutputs();
