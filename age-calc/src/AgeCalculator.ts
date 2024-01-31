@@ -5,15 +5,28 @@ export class AgeCalculator {
     this.birthDate = new Date(year, month - 1, day);
   }
 
-  public calculateAge(): number {
+  public calculateAge(): { days: number; months: number; years: number } {
     const today = new Date();
-    let age = today.getFullYear() - this.birthDate.getFullYear();
-    const m = today.getMonth() - this.birthDate.getMonth();
+    let years = today.getFullYear() - this.birthDate.getFullYear();
+    let months = today.getMonth() - this.birthDate.getMonth();
+    let days = today.getDate() - this.birthDate.getDate();
 
-    if (m < 0 || (m === 0 && today.getDate() < this.birthDate.getDate())) {
-      age--;
+    if (months < 0 || (months === 0 && days < 0)) {
+      years--;
+      months += 12;
     }
 
-    return age;
+    if (days < 0) {
+      const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+      days += previousMonth.getDate();
+      months--;
+    }
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    return { years, months, days };
   }
 }
