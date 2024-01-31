@@ -1,8 +1,7 @@
 export class DateValidator {
-
-  private day: number;
-  private month: number;
-  private year: number;
+  private _day: number;
+  private _month: number;
+  private _year: number;
   private stringDay: string;
   private stringMonth: string;
   private stringYear: string;
@@ -11,17 +10,17 @@ export class DateValidator {
   private possibleErrors: Map<number, string>;
 
   constructor(day: number, month: number, year: number) {
-    this.day = day;
-    this.month = month;
-    this.year = year;
-    
+    this._day = day;
+    this._month = month;
+    this._year = year;
+
     this.stringDay = day.toString();
     this.stringMonth = month.toString();
     this.stringYear = year.toString();
 
     this.currentDate = new Date();
     this.inputDate = new Date(year, month - 1, day);
-    this.possibleErrors =  new Map([
+    this.possibleErrors = new Map([
       [0, "This field is required"],
       [1, "Must be a valid date"],
       [2, "Must be a valid day"],
@@ -34,7 +33,9 @@ export class DateValidator {
   }
 
   isLeapYear(): boolean {
-    return this.year % 4 === 0 && (this.year % 100 !== 0 || this.year % 400 === 0);
+    return (
+      this.year % 4 === 0 && (this.year % 100 !== 0 || this.year % 400 === 0)
+    );
   }
 
   isDateInTheFuture(): boolean {
@@ -43,8 +44,8 @@ export class DateValidator {
 
   isFutureByDays(): boolean {
     const today = new Date();
-    today.setHours(0, 0, 0, 0); 
-    this.inputDate.setHours(0, 0, 0, 0); 
+    today.setHours(0, 0, 0, 0);
+    this.inputDate.setHours(0, 0, 0, 0);
     return this.inputDate.getTime() > today.getTime();
   }
 
@@ -81,52 +82,67 @@ export class DateValidator {
       31,
     ];
 
-    if (this.stringDay === "")
-      return this.possibleErrors.get(0)!;
+    if (this.stringDay === "") return this.possibleErrors.get(0)!;
 
-    if (this.day < 1)
-      return this.possibleErrors.get(2)!;
+    if (this.day < 1) return this.possibleErrors.get(2)!;
 
-    if (this.day > daysInMonth[this.month - 1]) 
-      return this.possibleErrors.get(1)!
+    if (this.day > daysInMonth[this.month - 1])
+      return this.possibleErrors.get(1)!;
 
-    if(this.isDateInTheFuture() && this.isFutureByDays())
+    if (this.isDateInTheFuture() && this.isFutureByDays())
       return this.possibleErrors.get(5)!;
 
     return null;
   }
 
   validateMonth(): string | null {
-    if (this.stringMonth === "")
-      return this.possibleErrors.get(0)!;
+    if (this.stringMonth === "") return this.possibleErrors.get(0)!;
 
     if (this.month < 1 || this.month > 12) {
       return this.possibleErrors.get(3)!;
     }
 
-    if(this.isDateInTheFuture() && this.isFutureByMonths())
+    if (this.isDateInTheFuture() && this.isFutureByMonths())
       return this.possibleErrors.get(6)!;
 
     return null;
   }
 
   validateYear(): string | null {
-    if (this.stringYear === "")
-      return this.possibleErrors.get(0)!;
+    if (this.stringYear === "") return this.possibleErrors.get(0)!;
 
     const yearError =
-      this.year < 1
-        ? 4
-        : this.year > this.currentDate.getFullYear()
-        ? 7
-        : null;
+      this.year < 1 ? 4 : this.year > this.currentDate.getFullYear() ? 7 : null;
 
-    if (yearError)
-      return this.possibleErrors.get(yearError)!; 
+    if (yearError) return this.possibleErrors.get(yearError)!;
 
-    if(this.isDateInTheFuture() && this.isFutureByYears())
+    if (this.isDateInTheFuture() && this.isFutureByYears())
       return this.possibleErrors.get(7)!;
 
     return null;
   }
+
+  get day(): number {
+    return this.day;
   }
+
+  set day(value: number) {
+    this.day = value;
+  }
+
+  get month(): number {
+    return this.month;
+  }
+
+  set month(value: number) {
+    this.month = value;
+  }
+
+  get year(): number {
+    return this.year;
+  }
+
+  set year(value: number) {
+    this.year = value;
+  }
+}

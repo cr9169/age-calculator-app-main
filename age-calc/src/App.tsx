@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import "./App.css";
-import { Calc } from "./AgeCalculator";
-import { isDateTemplate } from "./types";
+import { AgeCalculator } from "./AgeCalculator";
+import { DateValidator } from "./DateValidator";
 import { containsSubstringIgnoreCase } from "./stringActions";
 
 function App() {
@@ -16,6 +16,17 @@ function App() {
   const [daysAge, setDaysAge] = useState<string>("- -");
   const [monthsAge, setMonthsAge] = useState<string>("- -");
   const [yearsAge, setYearsAge] = useState<string>("- -");
+
+  const dateValidator = new DateValidator(
+    parseInt(day),
+    parseInt(month),
+    parseInt(year)
+  );
+  const ageCalculator = new AgeCalculator(
+    parseInt(day),
+    parseInt(month),
+    parseInt(year)
+  );
 
   const [isInputOK, setIsInputOk] = useState<boolean>(true);
   const [isPressedButton, setIsPressedButton] = useState<boolean>(false);
@@ -51,29 +62,33 @@ function App() {
   };
 
   const addOutput = (): void => {
-    const result = Calc.calculateAge(
-      parseInt(day),
-      parseInt(month),
-      parseInt(year)
-    );
+    dateValidator.day = parseInt(day);
+    dateValidator.month = parseInt(month);
+    dateValidator.year = parseInt(year);
 
-    if (!isDateTemplate(result) && isOneDateFieldEmpty()) {
-      for (const error of result!) {
-        const possibleError: string = possibleErrors.get(error) as string;
-        if (
-          containsSubstringIgnoreCase(possibleError, "day") ||
-          containsSubstringIgnoreCase(possibleError, "date")
-        )
-          setDayError(possibleError);
-        if (containsSubstringIgnoreCase(possibleError, "month"))
-          setMonthError(possibleError);
-        if (containsSubstringIgnoreCase(possibleError, "year"))
-          setYearError(possibleError);
-      }
+    dateValidator.day = parseInt(day);
+    dateValidator.month = parseInt(month);
+    dateValidator.year = parseInt(year);
 
-      setIsInputOk(false);
-      return;
-    }
+    const result = ageCalculator.calculateAge();
+
+    // if (!isDateTemplate(result) && isOneDateFieldEmpty()) {
+    //   for (const error of result!) {
+    //     const possibleError: string = possibleErrors.get(error) as string;
+    //     if (
+    //       containsSubstringIgnoreCase(possibleError, "day") ||
+    //       containsSubstringIgnoreCase(possibleError, "date")
+    //     )
+    //       setDayError(possibleError);
+    //     if (containsSubstringIgnoreCase(possibleError, "month"))
+    //       setMonthError(possibleError);
+    //     if (containsSubstringIgnoreCase(possibleError, "year"))
+    //       setYearError(possibleError);
+    //   }
+
+    //   setIsInputOk(false);
+    //   return;
+    // }
 
     console.log(result);
 
