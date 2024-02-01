@@ -14,9 +14,9 @@ export class DateValidator {
     this._month = month;
     this._year = year;
 
-    this.stringDay = day ? day.toString() : "";
-    this.stringMonth = month ? month.toString() : "";
-    this.stringYear = year ? year.toString() : "";
+    this.stringDay = day || day === 0 ? day.toString() : "";
+    this.stringMonth = month || month === 0 ? month.toString() : "";
+    this.stringYear = year || year === 0 ? year.toString() : "";
 
     this.currentDate = new Date();
     this.inputDate = new Date(year, month - 1, day);
