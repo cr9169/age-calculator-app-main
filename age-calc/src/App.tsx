@@ -1,20 +1,20 @@
-import { ChangeEvent, useState } from "react";
-import "./App.css";
-import { AgeCalculator } from "./AgeCalculator";
-import { DateValidator } from "./DateValidator";
+import { ChangeEvent, useState } from 'react';
+import './App.css';
+import { AgeCalculator } from './AgeCalculator';
+import { DateValidator } from './DateValidator';
 
 function App() {
-  const [day, setDay] = useState<string>("");
-  const [month, setMonth] = useState<string>("");
-  const [year, setYear] = useState<string>("");
+  const [day, setDay] = useState<string>('');
+  const [month, setMonth] = useState<string>('');
+  const [year, setYear] = useState<string>('');
 
-  const [dayError, setDayError] = useState<string>("");
-  const [monthError, setMonthError] = useState<string>("");
-  const [yearError, setYearError] = useState<string>("");
+  const [dayError, setDayError] = useState<string>('');
+  const [monthError, setMonthError] = useState<string>('');
+  const [yearError, setYearError] = useState<string>('');
 
-  const [daysAge, setDaysAge] = useState<string>("- -");
-  const [monthsAge, setMonthsAge] = useState<string>("- -");
-  const [yearsAge, setYearsAge] = useState<string>("- -");
+  const [daysAge, setDaysAge] = useState<string>('- -');
+  const [monthsAge, setMonthsAge] = useState<string>('- -');
+  const [yearsAge, setYearsAge] = useState<string>('- -');
 
   const dateValidator = new DateValidator(
     parseInt(day),
@@ -43,13 +43,13 @@ function App() {
   };
 
   const resetOutputs = () => {
-    setDayError("");
-    setMonthError("");
-    setYearError("");
+    setDayError('');
+    setMonthError('');
+    setYearError('');
 
-    setDaysAge("- -");
-    setMonthsAge("- -");
-    setYearsAge("- -");
+    setDaysAge('- -');
+    setMonthsAge('- -');
+    setYearsAge('- -');
 
     setIsInputOk(true);
     setIsPressedButton(false);
@@ -100,8 +100,8 @@ function App() {
             className="time-period-input-title"
             style={
               !isInputOK && isPressedButton
-                ? { color: "hsl(0, 100%, 67%)" }
-                : { color: "hsl(0, 0%, 8%)" }
+                ? { color: 'hsl(0, 100%, 67%)' }
+                : { color: 'hsl(0, 1%, 44%)' }
             }
           >
             D A Y
@@ -114,8 +114,8 @@ function App() {
             onChange={handleDayChange}
             style={
               !isInputOK && isPressedButton
-                ? { borderColor: "hsl(0, 100%, 67%)" }
-                : { borderColor: "hsl(0, 0%, 8%)" }
+                ? { borderColor: 'hsl(0, 100%, 67%)' }
+                : { borderColor: 'hsl(0, 0%, 8%)' }
             }
           />
           <span className="days-error">{dayError}</span>
@@ -125,8 +125,8 @@ function App() {
             className="time-period-input-title"
             style={
               !isInputOK && isPressedButton
-                ? { color: "hsl(0, 100%, 67%)" }
-                : { color: "hsl(0, 0%, 8%)" }
+                ? { color: 'hsl(0, 100%, 67%)' }
+                : { color: 'hsl(0, 1%, 44%)' }
             }
           >
             M O N T H
@@ -139,8 +139,8 @@ function App() {
             onChange={handleMonthChange}
             style={
               !isInputOK && isPressedButton
-                ? { borderColor: "hsl(0, 100%, 67%)" }
-                : { borderColor: "hsl(0, 0%, 8%)" }
+                ? { borderColor: 'hsl(0, 100%, 67%)' }
+                : { borderColor: 'hsl(0, 0%, 8%)' }
             }
           />
           <span className="months-error">{monthError}</span>
@@ -150,8 +150,8 @@ function App() {
             className="time-period-input-title"
             style={
               !isInputOK && isPressedButton
-                ? { color: "hsl(0, 100%, 67%)" }
-                : { color: "hsl(0, 0%, 8%)" }
+                ? { color: 'hsl(0, 100%, 67%)' }
+                : { color: 'hsl(0, 1%, 44%)' }
             }
           >
             Y E A R
@@ -164,8 +164,8 @@ function App() {
             onChange={handleYearChange}
             style={
               !isInputOK && isPressedButton
-                ? { borderColor: "hsl(0, 100%, 67%)" }
-                : { borderColor: "hsl(0, 0%, 8%)" }
+                ? { borderColor: 'hsl(0, 100%, 67%)' }
+                : { borderColor: 'hsl(0, 0%, 8%)' }
             }
           />
           <span className="years-error">{yearError}</span>

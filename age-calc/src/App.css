@@ -1,41 +1,41 @@
 @font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Italic.ttf") format("truetype");
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-BoldItalic.ttf") format("truetype");
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-BoldItalic.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
   font-weight: 800;
   font-style: italic;
 }
@@ -84,6 +84,7 @@ html {
 html,
 body {
   height: 100%;
+  width: 100%;
 }
 
 body {
@@ -152,7 +153,7 @@ h6 {
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
   color: var(--clr-neutral-900);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
   padding: 0.75rem 0 0.75rem 1.5rem;
 }
@@ -162,14 +163,14 @@ h6 {
 }
 
 .date-period-input-field input:hover {
-  cursor: url("./assets/images/icons8-hand-cursor-32.png"), pointer;
+  cursor: url('./assets/images/icons8-hand-cursor-32.png'), pointer;
 }
 
 .time-period-input-title {
   font-size: var(--fs-primary);
   font-weight: var(--fw-bold);
   color: var(--clr-neutral-500);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
 }
 
@@ -182,7 +183,7 @@ h6 {
 .error {
   color: var(--clr-primary-500);
   font-size: var(--clr-neutral-100);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: italic;
 }
 
@@ -210,7 +211,7 @@ h6 {
 
 .button-section button:hover {
   background-color: var(--clr-neutral-900);
-  cursor: url("./assets/images/icons8-hand-cursor-32.png"), pointer;
+  cursor: url('./assets/images/icons8-hand-cursor-32.png'), pointer;
 }
 
 .age-output-section {
@@ -228,7 +229,7 @@ h6 {
 .days-age {
   font-size: var(--fs-xxl);
   font-weight: var(--fw-extra-bold);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: italic;
   color: var(--clr-primary-400);
 }
@@ -238,12 +239,60 @@ h6 {
 .days-output {
   font-size: var(--fs-xxl);
   font-weight: var(--fw-extra-bold);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: italic;
   color: var(--clr-primary-900);
 }
 
 @media (max-width: 1024px) {
+  html {
+    --fs-xl: 1.5rem;
+    --fs-xxl: 3.5rem;
+  }
+
+  .main-window {
+    padding: 4.5rem 2rem 3.5rem 2rem;
+  }
+
+  .age-input-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  .date-period-input-field {
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    --fs-base: 0.1rem;
+    --fs-primary: 0.8rem;
+    --fs-xl: 1.5rem;
+    --fs-xxl: 3.25rem;
+  }
+
+  .main-window {
+    padding: 4.5rem 2rem 3.5rem 2rem;
+  }
+
+  .date-period-input-field {
+    width: 30%;
+    gap: 0.5rem;
+  }
+
+  .date-period-input-field input {
+    padding: 0.75rem 0 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* html {
+    --fs-xl: 1.5rem;
+    --fs-xxl: 3.5rem;
+  }
 
   .main-window {
     padding: 4.5rem 2rem 3.5rem 2rem;
@@ -260,5 +309,33 @@ h6 {
     width: 30%;
   }
 
-  
+  .date-period-input-field input {
+    padding: 0.5rem 0 0.5rem 0.25rem;
+  } */
+}
+
+@media (max-width: 425px) {
+  /* html {
+    --fs-xl: 1.5rem;
+    --fs-xxl: 3.5rem;
+  }
+
+  .main-window {
+    padding: 4.5rem 2rem 3.5rem 2rem;
+  }
+
+  .age-input-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  .date-period-input-field {
+    width: 30%;
+  }
+
+  .date-period-input-field input {
+    padding: 0.5rem 0 0.5rem 0.25rem;
+  } */
 }
