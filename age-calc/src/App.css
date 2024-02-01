@@ -127,7 +127,7 @@ h6 {
   flex-direction: column;
   background-color: var(--clr-neutral-100);
   border-radius: 3rem 3rem 12rem 3rem;
-  padding: 3.5rem;
+  padding: 4.5rem 3.5rem 3.5rem 3.5rem;
 }
 
 .age-input-section {
@@ -241,4 +241,24 @@ h6 {
   font-family: "Poppins", sans-serif;
   font-style: italic;
   color: var(--clr-primary-900);
+}
+
+@media (max-width: 1024px) {
+
+  .main-window {
+    padding: 4.5rem 2rem 3.5rem 2rem;
+  }
+
+  .age-input-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  .date-period-input-field {
+    width: 30%;
+  }
+
+  
 }
