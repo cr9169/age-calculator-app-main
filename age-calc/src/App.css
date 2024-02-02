@@ -91,10 +91,6 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--clr-neutral-150);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 img,
@@ -140,6 +136,7 @@ h6 {
 }
 
 .date-period-input-field {
+  height: 100%;
   width: 22.5%;
   display: flex;
   flex-direction: column;
@@ -178,11 +175,7 @@ h6 {
 .months-error,
 .years-error {
   color: var(--clr-primary-500);
-}
-
-.error {
-  color: var(--clr-primary-500);
-  font-size: var(--clr-neutral-100);
+  font-size: var(--fs-primary);
   font-family: 'Poppins', sans-serif;
   font-style: italic;
 }
