@@ -245,6 +245,7 @@ h6 {
 
   .main-window {
     padding: 4.5rem 2rem 3.5rem 2rem;
+    border-radius: 2.5rem 2.5rem 10rem 2.5rem;
   }
 
   .age-input-section {
@@ -269,6 +270,7 @@ h6 {
 
   .main-window {
     padding: 4.5rem 2rem 3.5rem 2rem;
+    border-radius: 2rem 2rem 8rem 2rem;
   }
 
   .date-period-input-field {
@@ -282,53 +284,29 @@ h6 {
 }
 
 @media (max-width: 600px) {
-  /* html {
-    --fs-xl: 1.5rem;
-    --fs-xxl: 3.5rem;
+  html {
+    --fs-base: 0.075rem;
+    --fs-primary: 0.6rem;
+    --fs-xl: 1.125rem;
+    --fs-xxl: 2.4375rem;
   }
 
   .main-window {
-    padding: 4.5rem 2rem 3.5rem 2rem;
+    padding: 3.5rem 2rem 2.5rem 2rem;
+    border-radius: 2rem 2rem 6.5rem 2rem;
   }
-
-  .age-input-section {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-  }
-
-  .date-period-input-field {
-    width: 30%;
-  }
-
-  .date-period-input-field input {
-    padding: 0.5rem 0 0.5rem 0.25rem;
-  } */
 }
 
-@media (max-width: 425px) {
-  /* html {
-    --fs-xl: 1.5rem;
-    --fs-xxl: 3.5rem;
+@media (max-width: 475px) {
+  html {
+    --fs-base: 0.05625rem;
+    --fs-primary: 0.45rem;
+    --fs-xl: 0.85rem;
+    --fs-xxl: 1.825rem;
   }
 
   .main-window {
-    padding: 4.5rem 2rem 3.5rem 2rem;
+    padding: 2.5rem 2rem 1.5rem 2rem;
+    border-radius: 1.5rem 1.5rem 5rem 1.5rem;
   }
-
-  .age-input-section {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-  }
-
-  .date-period-input-field {
-    width: 30%;
-  }
-
-  .date-period-input-field input {
-    padding: 0.5rem 0 0.5rem 0.25rem;
-  } */
 }
