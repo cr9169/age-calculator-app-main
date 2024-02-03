@@ -352,9 +352,19 @@ h6 {
       padding: 0.5rem 0 0.5rem 0.35rem;
     }
 
+    .button-section {
+      margin-bottom: 20%;
+    }
+
+    .button-section hr {
+      position: relative;
+    }
+
     .button-section button {
       height: 2.5rem;
       width: 2.5rem;
+      position: absolute;
+      left: 45%;
     }
 
     .button-section svg {
